@@ -1,230 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-        <!-- link external css -->
-        <link rel="stylesheet" href="css/bootstrap_css.css">
-        <link rel="stylesheet" href="css/style.css">
-        <!-- link external javascript file  -->
-        <script src="js/bootstrap_js.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Video Gallery | Codes With Pankaj</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2e;
+      --panel-2: #18233b;
+      --text: #f4f7ff;
+      --muted: #a8b3ca;
+      --accent: #65a7ff;
+      --border: rgba(255,255,255,.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: radial-gradient(circle at 15% 0%, #17294a 0, transparent 34%), var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .wrap { width: min(1500px, 100% - 40px); margin: auto; }
+    header { padding: 38px 0 24px; }
+    .topline { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    .brand { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-weight: 800; }
+    h1 { margin: 10px 0 8px; font-size: clamp(28px, 4vw, 46px); letter-spacing: -.04em; }
+    .sub { color: var(--muted); margin: 0; line-height: 1.6; }
+    .pill { border:1px solid var(--border); color:var(--muted); padding:9px 13px; border-radius:999px; font-size:12px; }
+    .toolbar { display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin: 12px 0 22px; }
+    .filters { display:flex; gap:8px; flex-wrap:wrap; }
+    button {
+      color:var(--text); background:var(--panel); border:1px solid var(--border);
+      padding:10px 15px; border-radius:10px; cursor:pointer; font:inherit; font-size:13px;
+      transition:.2s ease;
+    }
+    button:hover, button.active { background:#20375b; border-color:rgba(101,167,255,.55); }
+    .note { color:var(--muted); font-size:12px; line-height:1.5; max-width:560px; }
+    .grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; padding-bottom:48px; }
+    .card { min-width:0; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:linear-gradient(180deg,var(--panel-2),var(--panel)); box-shadow:0 12px 35px rgba(0,0,0,.18); }
+    .frame { position:relative; background:#05070c; aspect-ratio:16/9; overflow:hidden; }
+    .card.short .frame { aspect-ratio:9/16; max-height:480px; }
+    iframe { width:100%; height:100%; border:0; position:absolute; inset:0; }
+    .meta { padding:13px 14px 15px; display:flex; justify-content:space-between; align-items:center; gap:10px; }
+    .title { font-size:13px; font-weight:650; }
+    .type { color:var(--muted); font-size:11px; white-space:nowrap; }
+    footer { border-top:1px solid var(--border); padding:22px 0 30px; color:var(--muted); font-size:12px; text-align:center; }
+    @media (max-width:1100px) { .grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+    @media (max-width:760px) { .wrap { width:min(100% - 24px, 600px); } header { padding-top:26px; } .grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; } .card.short .frame { max-height:380px; } }
+    @media (max-width:480px) { .grid { grid-template-columns:1fr; } .card.short .frame { max-height:520px; } }
+  </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href="#">
-           <span class="fs-3 heading_color">CWPC</span> 
-            <img src="img/logo.png" height="50" width="50">
-           <span class="fs-3 heading_color">Infotech</span>
-            
-         </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link rounded-pill ps-4 pe-4 theme_bg_color text-white text-center m-2" aria-current="page" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link rounded-pill ps-4 pe-4 theme_bg_color text-white text-center m-2" aria-current="page" href="Aboutus.html">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link rounded-pill ps-4 pe-4 theme_bg_color text-white text-center m-2" aria-current="page" href="Contactus.html">Contact us</a>
-              </li>
-              <li class="nav-item dropdown rounded-pill ps-4 pe-4 theme_bg_color text-white text-center m-2">
-                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown link
-                </a>
-                <ul class="dropdown-menu theme_bg_color text-white text-center ">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-          <a class="fs-1 heading_color" data-bs-toggle="modal" data-bs-target="#login"><i class="bi bi-box-arrow-in-right"></i></a>
-
-
-        </div>
-      </nav>
-
-      <!-- start modal code -->
-
-      <div class="modal" id="login">
-
-        <div class="modal-dialog">
-          <div class="modal-content">
-            
-            <div class="modal-header theme_bg_color text-white">
-              <h1 class="modal-title fs-5">Login </h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-              <div class="m-2">
-                <label class="form-label">User Name : </label>
-                <input class="form-control"  type="email" placeholder="Enter Email..">
-              </div>
-              <div class="m-2">
-                <label class="form-label">Password : </label>
-                <input class="form-control"  type="password" placeholder="Enter password..">
-              </div>
-
-            </div>
-            <div class="modal-footer theme_bg_color">
-
-              <button class="border-1 border-light theme_bg_color text-white p-2 rounded-4">Login now !</button>
-
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-      <!-- End modal code-->
-
-
-      <!-- slider section start -->
-
-      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="img/1.png" class="d-block w-100" alt="..." style="height: 300px;">
-          </div>
-          <div class="carousel-item">
-            <img src="img/2.png" class="d-block w-100" alt="..." style="height: 300px;">
-          </div>
-          <div class="carousel-item">
-            <img src="img/3.png" class="d-block w-100" alt="..." style="height: 300px;">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-
-      <!--slider section end-->
-
-
-      <!-- Center Section  Start -->
-
-      <section class="container mt-4">
-
-          <div class="row">
-
-            <div class="col-sm-4 p-3">
-
-              <img src="img/artificial-intelligence.png" class="img-fluid">
-
-            </div>
-            <div class="col-sm-8 p-3">
-                  <h1 class="text-start"><i class="bi bi-award"></i> <span class="heading_color">Artificial</span>  Intelligence</h1>
-                  <p class="text-start">Artificial intelligence (AI) is intelligence demonstrated by machines, in contrast to the natural intelligence displayed by humans and animals. Leading AI textbooks define the field as the study of "intelligent agents": any device that perceives its environment and takes actions that maximize its chance of successfully achieving its goals.</p>
-                  <figure>
-                    <blockquote class="blockquote heading_color">
-                      <p>A well-known quote, contained in a blockquote element.</p>
-                    </blockquote>
-                    <figcaption class="blockquote-footer">
-                     Pankaj Chouhan <cite title="Source Title">@codeswithpankaj.com</cite>
-                    </figcaption>
-                  </figure>
-                 <button type="button" class="btn btn-primary rounded-pill theme_bg_color">Read More</button>
-            </div>
-
-          </div>
-
-
-      
-      </section>
-
-
-
-      <!-- Center Section  End -->
-
-
-<!-- Start Product Section -->
-
-<div class="container mt-5 mb-5">
-
-  <div class="row">
-    <div class="col-sm-3 p-2">
-        <div class="card shadow-lg border p-2">
-          <div class="card-body">
-            <img src="img/artificial-intelligence.png" class="img-fluid p-1">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary theme_bg_color">300/-</button>
-          </div>
-        </div>
+  <header class="wrap">
+    <div class="topline">
+      <div class="brand">Codes With Pankaj</div>
+      <div class="pill">Video Learning Gallery</div>
     </div>
+    <h1>Explore All Videos</h1>
+    <p class="sub">A responsive video gallery for tutorials and Shorts.</p>
+  </header>
 
-    <div class="col-sm-3 p-2">
-      <div class="card shadow-lg border p-2">
-        <div class="card-body">
-          <img src="img/artificial-intelligence.png" class="img-fluid p-1">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <div class="card-footer">
-          <button type="button" class="btn btn-primary theme_bg_color">300/-</button>
-        </div>
+  <main class="wrap">
+    <section class="toolbar" aria-label="Video filters">
+      <div class="filters">
+        <button class="active" data-filter="all">All videos (16)</button>
+        <button data-filter="video">YouTube videos (7)</button>
+        <button data-filter="short">YouTube Shorts (9)</button>
       </div>
-    </div>
-   
+      <div class="note">Videos are set to start muted automatically. Select a video’s sound control to turn audio on. Autoplay depends on browser and YouTube playback permissions.</div>
+    </section>
+    <section class="grid" id="videoGrid" aria-label="Video gallery"></section>
+  </main>
 
-    <div class="col-sm-3 p-2">
-      <div class="card shadow-lg border p-2">
-        <div class="card-body">
-          <img src="img/artificial-intelligence.png" class="img-fluid p-1">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <div class="card-footer">
-          <button type="button" class="btn btn-primary theme_bg_color">300/-</button>
-        </div>
-      </div>
-    </div>
+  <footer class="wrap">© <span id="year"></span> Codes With Pankaj. All rights reserved.</footer>
 
-    <div class="col-sm-3 p-2">
-      <div class="card shadow-lg border p-2">
-        <div class="card-body">
-          <img src="img/artificial-intelligence.png" class="img-fluid p-1">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <div class="card-footer">
-          <button type="button" class="btn btn-primary theme_bg_color">300/-</button>
-        </div>
-      </div>
-    </div>
-    
+  <script>
+    const videos = [
+      { id: "4xdxEKS301Y", kind: "video", title: "Tutorial 01" },
+      { id: "4xti8xw5XVg", kind: "video", title: "Tutorial 02" },
+      { id: "LphFiU0FRYs", kind: "video", title: "Tutorial 03" },
+      { id: "Zue3so29wJQ", kind: "video", title: "Tutorial 04" },
+      { id: "QeWtxb4ouK0", kind: "video", title: "Tutorial 05" },
+      { id: "atDwP4S0cv0", kind: "video", title: "Tutorial 06" },
+      { id: "XCWJ6dpDv_A", kind: "video", title: "Tutorial 07" },
+      { id: "VYmb72F2daE", kind: "short", title: "Short 01" },
+      { id: "ULoH6h5fB48", kind: "short", title: "Short 02" },
+      { id: "eiyGwIcDCLQ", kind: "short", title: "Short 03" },
+      { id: "GguREH5s9Vw", kind: "short", title: "Short 04" },
+      { id: "qg03Lzmt-3o", kind: "short", title: "Short 05" },
+      { id: "Pglx8t0IGp0", kind: "short", title: "Short 06" },
+      { id: "x9Fk2LrnZdk", kind: "short", title: "Short 07" },
+      { id: "Tjl4SHNl5_g", kind: "short", title: "Short 08" },
+      { id: "fBC3nTReNIs", kind: "short", title: "Short 09" }
+    ];
 
+    const grid = document.getElementById("videoGrid");
+    videos.forEach((video, index) => {
+      const card = document.createElement("article");
+      card.className = `card ${video.kind}`;
+      card.dataset.kind = video.kind;
 
+      const frame = document.createElement("div");
+      frame.className = "frame";
 
+      const iframe = document.createElement("iframe");
+      const params = new URLSearchParams({
+        autoplay: "1",
+        mute: "1",
+        playsinline: "1",
+        controls: "1",
+        rel: "0",
+        modestbranding: "1"
+      });
+      iframe.src = `https://www.youtube-nocookie.com/embed/${video.id}?${params.toString()}`;
+      iframe.title = video.title;
+      iframe.loading = index < 4 ? "eager" : "lazy";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
 
-  </div>
-</div>
+      const meta = document.createElement("div");
+      meta.className = "meta";
+      meta.innerHTML = `<span class="title">${video.title}</span><span class="type">${video.kind === "short" ? "SHORT" : "VIDEO"}</span>`;
 
+      frame.appendChild(iframe);
+      card.append(frame, meta);
+      grid.appendChild(card);
+    });
 
+    document.querySelectorAll("[data-filter]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-filter]").forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        const filter = button.dataset.filter;
+        document.querySelectorAll(".card").forEach(card => {
+          card.hidden = filter !== "all" && card.dataset.kind !== filter;
+        });
+      });
+    });
 
-
-<!-- end product section  -->
-
-
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
