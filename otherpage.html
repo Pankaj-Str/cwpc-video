@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A New Era | PRiLearn</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    background:#050713;
+    color:white;
+    font-family:Arial,sans-serif;
+    overflow:hidden;
+}
+
+.screen{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    background:
+    radial-gradient(ellipse at center,#17265a 0%,#090d20 48%,#03040a 100%);
+}
+
+.glow{
+    position:absolute;
+    width:350px;height:350px;
+    background:#285bff;
+    border-radius:50%;
+    filter:blur(150px);
+    opacity:.35;
+    animation:glow 4s infinite alternate;
+}
+
+@keyframes glow{
+    to{transform:scale(1.7);opacity:.15}
+}
+
+.content{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding:20px;
+}
+
+.old{
+    font-size:clamp(22px,5vw,45px);
+    font-weight:700;
+    letter-spacing:2px;
+    animation:oldExit 5s forwards;
+}
+
+.old span{color:#769aff}
+
+.big{
+    font-size:clamp(12px,2vw,17px);
+    letter-spacing:8px;
+    color:#aebce8;
+    margin-top:40px;
+    opacity:0;
+    animation:bigReveal 2s 3s forwards;
+}
+
+.big strong{
+    display:block;
+    font-size:clamp(30px,7vw,65px);
+    letter-spacing:3px;
+    color:white;
+    margin-top:20px;
+}
+
+.brand{
+    font-size:clamp(65px,14vw,140px);
+    font-weight:900;
+    letter-spacing:-6px;
+    background:linear-gradient(110deg,#fff,#91b1ff,#4275ff,#fff);
+    background-size:250%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    opacity:0;
+    transform:scale(.5);
+    animation:brandReveal 2s 6s forwards,shine 4s 8s linear infinite;
+}
+
+@keyframes brandReveal{
+    to{opacity:1;transform:scale(1)}
+}
+
+@keyframes shine{
+    to{background-position:250%}
+}
+
+@keyframes oldExit{
+    0%{opacity:0;transform:translateY(20px)}
+    20%{opacity:1;transform:translateY(0)}
+    70%{opacity:1}
+    100%{opacity:0;transform:scale(1.5);filter:blur(15px)}
+}
+
+@keyframes bigReveal{
+    to{opacity:1}
+}
+
+.tagline{
+    font-size:12px;
+    letter-spacing:6px;
+    color:#a9bce9;
+    margin-top:10px;
+    opacity:0;
+    animation:fade 2s 8s forwards;
+}
+
+@keyframes fade{
+    to{opacity:1}
+}
+
+.line{
+    height:2px;
+    width:0;
+    margin:35px auto;
+    background:linear-gradient(90deg,transparent,#7296ff,transparent);
+    animation:line 2s 8s forwards;
+}
+
+@keyframes line{
+    to{width:min(300px,75vw)}
+}
+
+.location{
+    font-size:13px;
+    letter-spacing:5px;
+    color:#8198d5;
+    opacity:0;
+    animation:fade 2s 9s forwards;
+}
+
+.location span{color:white;font-weight:bold}
+
+.footer{
+    position:absolute;
+    bottom:25px;
+    width:100%;
+    text-align:center;
+    font-size:10px;
+    letter-spacing:3px;
+    color:#697594;
+    opacity:0;
+    animation:fade 2s 10s forwards;
+}
+
+.particle{
+    position:absolute;
+    width:3px;height:3px;
+    background:#8caaff;
+    border-radius:50%;
+    box-shadow:0 0 15px #6e91ff;
+    animation:float 6s infinite;
+}
+
+.p1{top:20%;left:15%}
+.p2{top:70%;left:80%;animation-delay:2s}
+.p3{top:35%;left:85%;animation-delay:1s}
+.p4{top:80%;left:20%;animation-delay:3s}
+.p5{top:15%;left:65%;animation-delay:2.5s}
+
+@keyframes float{
+    50%{transform:translateY(-40px);opacity:.2}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="screen">
+
+<div class="glow"></div>
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+
+<div class="content">
+
+    <div class="old">
+        CODES WITH <span>PANKAJ</span>
+    </div>
+
+    <div class="big">
+        SOMETHING BIG IS COMING
+        <strong>A NEW ERA BEGINS.</strong>
+    </div>
+
+    <div class="brand">PRiLearn</div>
+
+    <div class="tagline">
+        LEARN. INNOVATE. SUCCEED.
+    </div>
+
+    <div class="line"></div>
+
+    <div class="location">
+        THE NEXT BIG THING IN <span>MUMBAI</span>
+    </div>
+
+</div>
+
+<div class="footer">
+    A NEW IDENTITY. A BIGGER VISION.
+</div>
+
+</div>
+
+</body>
+</html>
